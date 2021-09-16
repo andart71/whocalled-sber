@@ -13,17 +13,17 @@ export const CheckPhonePage = ({phone}: any) => {
                             content={<TextBox><TextBoxBiggerTitle>Информация о номере</TextBoxBiggerTitle><TextBoxSubTitle>{phone.full_num}</TextBoxSubTitle></TextBox>}
                         /><br />
                         <Cell
-                            contentLeft={<IconNetwork size="s" color="inherit" />}
+                            contentLeft={<IconNetwork size="s" color="inherit" />   }
                             content={<TextBox><TextBoxBigTitle>Оператор связи</TextBoxBigTitle><TextBoxSubTitle>{phone.operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         /><br />
                         <Cell
-                            contentLeft={<IconLocation size="s" color="inherit" />}
+                            contentLeft={<IconLocation size="s" color="inherit" />   }
                             content={<TextBox><TextBoxBigTitle>Город абонента</TextBoxBigTitle><TextBoxSubTitle>{phone.region}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         /><br />
                         {(phone.old_operator ? (<Cell
-                            contentLeft={<IconNetwork size="s" color="inherit" />}
+                            contentLeft={<IconNetwork size="s" color="inherit" />   }
                             content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.old_operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />) : null)}
