@@ -6,7 +6,7 @@ export const CheckPhonePage = ({phone}: any) => {
     return (
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px"}}>
-                <Card style={{ width: '30rem' }}>
+                <Card style={{ width: "100%" }}>
                     <CardContent compact>
                         <Cell
                             content={<TextBox><TextBoxBiggerTitle>Информация</TextBoxBiggerTitle><TextBoxSubTitle>{phone.full_num}</TextBoxSubTitle></TextBox>}
