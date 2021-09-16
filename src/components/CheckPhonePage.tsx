@@ -19,6 +19,10 @@ export const CheckPhonePage = ({phone}: any) => {
                             content={<TextBox><TextBoxBigTitle>Город абонента</TextBoxBigTitle><TextBoxSubTitle>{phone.region}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         /><br />
+                        {(phone.old_operator ? (<Cell
+                            content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.old_operator}</TextBoxSubTitle></TextBox>}
+                            alignRight="center"
+                        />) : null)}
                     </CardContent>
                 </Card>
             </Col>
