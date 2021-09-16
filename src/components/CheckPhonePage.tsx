@@ -6,10 +6,10 @@ export const CheckPhonePage = ({phone}: any) => {
     return (
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px"}}>
-                <Card style={{ margin: "0 auto" }}>
+                <Card style={{ width: "100%", margin: "0 auto" }}>
                     <CardContent compact>
                         <Cell
-                            content={<TextBox><TextBoxBiggerTitle>Информация</TextBoxBiggerTitle><TextBoxSubTitle>{phone.full_num}</TextBoxSubTitle></TextBox>}
+                            content={<TextBox><TextBoxBiggerTitle>Информация о номере</TextBoxBiggerTitle><TextBoxSubTitle>{phone.full_num}</TextBoxSubTitle></TextBox>}
                         /><br />
                         <Cell
                             content={<TextBox><TextBoxBigTitle>Оператор связи</TextBoxBigTitle><TextBoxSubTitle>{phone.operator}</TextBoxSubTitle></TextBox>}
