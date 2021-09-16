@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Row, Col, CardContent, Cell, CellIcon, Card, TextBoxRoot, TextBoxTitle } from '@sberdevices/plasma-ui';
+import {Row, Col, CardContent, Cell, Card, TextBoxBiggerTitle, TextBoxSubTitle, TextBoxBigTitle, TextBox  } from '@sberdevices/plasma-ui';
 
 export const CheckPhonePage = ({phone}: any) => {
     return (
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px"}}>
-                <Card style={{ margin: "0 auto" }}>
+                <Card style={{ width: '30rem' }}>
                     <CardContent compact>
                         <Cell
-                            content={<TextBoxTitle>Перевод</TextBoxTitle>}
-                        />
+                            content={<TextBox><TextBoxBiggerTitle>Информация</TextBoxBiggerTitle><TextBoxSubTitle>{phone.full_num}</TextBoxSubTitle></TextBox>}
+                        /><br />
                         <Cell
-                            contentLeft={
-                                <CellIcon>
-                                </CellIcon>
-                            }
-                            content={<TextBoxRoot>d</TextBoxRoot>}
+                            content={<TextBox><TextBoxBigTitle>Оператор связи</TextBoxBigTitle><TextBoxSubTitle>{phone.operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
-                        />
+                        /><br />
+                        <Cell
+                            content={<TextBox><TextBoxBigTitle>Город абонента</TextBoxBigTitle><TextBoxSubTitle>{phone.region}</TextBoxSubTitle></TextBox>}
+                            alignRight="center"
+                        /><br />
                     </CardContent>
                 </Card>
             </Col>

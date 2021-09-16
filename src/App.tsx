@@ -8,7 +8,7 @@ import CheckPhonePage from "./components/CheckPhonePage";
 export const App: FC = memo(() => {
         const [appState, dispatch] = useReducer(reducer, {
             currentState: '',
-            phone: ''
+            phone: {}
         });
 
         useEffect(() => {

@@ -1,6 +1,6 @@
 type State = {
     currentState: string,
-    phone: string
+    phone: object
 };
 
 type Action =
@@ -9,7 +9,7 @@ type Action =
 }
     |{
     type: 'SUCCESS_PHONE',
-    phone: string,
+    phone: object,
     currentState: string
 }
 
