@@ -8,7 +8,8 @@ import CheckPhonePage from "./components/CheckPhonePage";
 export const App: FC = memo(() => {
         const [appState, dispatch] = useReducer(reducer, {
             currentState: '',
-            phone: {}
+            phone: {},
+            countViews: 0
         });
 
         useEffect(() => {
@@ -18,7 +19,7 @@ export const App: FC = memo(() => {
         const route = () => {
             switch (appState.currentState) {
                 case 'phone':
-                    return <CheckPhonePage phone={appState.phone} />;
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews}/>;
                     break;
                 default:
                     return <PhonePage />

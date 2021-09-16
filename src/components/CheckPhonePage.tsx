@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Row, Col, CardContent, Cell, Card, TextBoxBiggerTitle, TextBoxSubTitle, TextBoxBigTitle, TextBox  } from '@sberdevices/plasma-ui';
-import { IconNetwork, IconLocation } from '@sberdevices/plasma-icons';
+import { IconNetwork, IconLocation, IconEye } from '@sberdevices/plasma-icons';
 
-export const CheckPhonePage = ({phone}: any) => {
+export const CheckPhonePage = ({phone, countViews}: any) => {
     return (
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px"}}>
@@ -27,6 +27,11 @@ export const CheckPhonePage = ({phone}: any) => {
                             content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.old_operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />) : null)}
+                        <br /><Cell
+                            contentLeft={<IconEye size="s" color="inherit" />  }
+                            content={<TextBox><TextBoxBigTitle>Количество просмотров</TextBoxBigTitle><TextBoxSubTitle>{countViews}</TextBoxSubTitle></TextBox>}
+                            alignRight="center"
+                        />
                     </CardContent>
                 </Card>
             </Col>

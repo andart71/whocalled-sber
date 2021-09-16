@@ -1,6 +1,7 @@
 type State = {
     currentState: string,
-    phone: object
+    phone: object,
+    countViews: number
 };
 
 type Action =
@@ -10,7 +11,8 @@ type Action =
     |{
     type: 'SUCCESS_PHONE',
     phone: object,
-    currentState: string
+    currentState: string,
+    countViews: number
 }
 
 export const reducer = (state: State, action: Action) => {
@@ -25,7 +27,8 @@ export const reducer = (state: State, action: Action) => {
             return {
                 ...state,
                 currentState: 'phone',
-                phone: action.phone
+                phone: action.phone,
+                countViews: action.countViews
             }
         default:
             return {...state}
