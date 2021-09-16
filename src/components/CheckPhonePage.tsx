@@ -38,7 +38,7 @@ export const CheckPhonePage = ({phone, countViews}: any) => {
                             content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.old_operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />) : null)}
-                        <br /><Cell
+                        <Cell
                         contentLeft={<CellIcon><IconEye size="s" color="inherit" /></CellIcon>}
                             content={<TextBox><TextBoxBigTitle>Количество просмотров</TextBoxBigTitle><TextBoxSubTitle>{countViews}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
