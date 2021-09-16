@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Row, Col, TextField, Button} from '@sberdevices/plasma-ui';
 import { isSberBox } from '@sberdevices/plasma-ui/utils';
 import { sendData } from '../assistant';
+import { IconCallCircle } from '@sberdevices/plasma-icons';
 
 const StyledTextField = styled(TextField)`
     max-width: 100%;
@@ -53,6 +54,7 @@ export const PhonePage = () => {
                         name="phone"
                         onKeyDown={onKeyDown}
                         pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}"
+                        contentLeft={<IconCallCircle size="s" color="inherit" />}
                     />
                 </Col>
             </Row>
