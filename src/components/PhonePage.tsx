@@ -49,7 +49,7 @@ export const PhonePage = () => {
                 <Col type="calc" sizeXL={4} sizeM={6} style={{margin: "0 auto", marginTop: "15px"}}>
                     <StyledTextField
                         label="+79000000000"
-                        value={setPhone.phone}
+                        value={setPhone.phone ? setPhone.phone : "+7"}
                         onChange={handleChange}
                         name="phone"
                         onKeyDown={onKeyDown}
