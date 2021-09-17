@@ -17,7 +17,7 @@ import { IconNetwork, IconLocation, IconEye } from '@sberdevices/plasma-icons';
 export const CheckPhonePage = ({phone, countViews}: any) => {
     return (
         <Row>
-            <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px"}}>
+            <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px", width: "100%"}}>
                 <Card style={{ width: "100%", margin: "0 auto" }}>
                     <CardContent compact>
                         <Cell
