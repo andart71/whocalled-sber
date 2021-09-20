@@ -4,6 +4,7 @@ import { reducer } from './store';
 import { initAssistant } from './assistant';
 import { PhonePage } from './components/PhonePage';
 import CheckPhonePage from "./components/CheckPhonePage";
+import { sendData } from './assistant';
 
 export const App: FC = memo(() => {
         const [appState, dispatch] = useReducer(reducer, {
@@ -19,10 +20,10 @@ export const App: FC = memo(() => {
         const route = () => {
             switch (appState.currentState) {
                 case 'phone':
-                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews}/>;
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} />;
                     break;
                 default:
-                    return <PhonePage />;
+                    return <PhonePage currentState={appState.currentState} />;
                 break;
             }
         }

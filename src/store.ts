@@ -14,6 +14,10 @@ type Action =
     currentState: string,
     countViews: number
 }
+|{
+    type: 'CHECK',
+    currentState: string
+}
 
 export const reducer = (state: State, action: Action) => {
 
@@ -29,6 +33,11 @@ export const reducer = (state: State, action: Action) => {
                 currentState: 'phone',
                 phone: action.phone,
                 countViews: action.countViews
+            }
+        case 'CHECK':
+            return {
+                ...state,
+                currentState: 'check'
             }
         default:
             return {...state}

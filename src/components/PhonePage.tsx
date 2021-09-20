@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {Row, Col, TextField, Button} from '@sberdevices/plasma-ui';
 import { isSberBox } from '@sberdevices/plasma-ui/utils';
@@ -18,7 +18,7 @@ const StyledButton = styled(Button)`
     float: none;
 `;
 
-export const PhonePage = () => {
+export const PhonePage = ({currentState}: any) => {
     const formRef = React.useRef<HTMLFormElement>(null);
     const [setPhone, setInputPhone] = useState<any>('');
     const onKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -32,6 +32,11 @@ export const PhonePage = () => {
             }
         }
     }, []);
+    useEffect(() => {
+        if (currentState == "check") {
+            sendData({action: {action_id: 'SEND_PHONE', parameters: {phone: setPhone.phone}}});
+        }
+    });
     const handleSubmit = () => {
         sendData({action: {action_id: 'SEND_PHONE', parameters: {phone: setPhone.phone}}});
     }
