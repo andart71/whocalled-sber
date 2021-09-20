@@ -22,7 +22,7 @@ export const App: FC = memo(() => {
                     return <CheckPhonePage phone={appState.phone} countViews={appState.countViews}/>;
                     break;
                 default:
-                    return <PhonePage />
+                    return <PhonePage />;
                 break;
             }
         }

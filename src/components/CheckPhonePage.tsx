@@ -33,18 +33,19 @@ export const CheckPhonePage = ({phone, countViews}: any) => {
                             content={<TextBox><TextBoxBigTitle>Город абонента</TextBoxBigTitle><TextBoxSubTitle>{phone.region}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         /><br />
-                        {(phone.old_operator ? (<Cell
+                        {(phone.old_operator ? (
+                        <Cell
                             contentLeft={<CellIcon><IconNetwork size="s" color="inherit" /></CellIcon>}
-                            content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.old_operator}</TextBoxSubTitle></TextBox>}
+                            content={<TextBox><TextBoxBigTitle>Старый оператор</TextBoxBigTitle><TextBoxSubTitle>{phone.operator}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
-                        />) : null)}
+                        />) : null )}
                         <Cell
                         contentLeft={<CellIcon><IconEye size="s" color="inherit" /></CellIcon>}
                             content={<TextBox><TextBoxBigTitle>Количество просмотров</TextBoxBigTitle><TextBoxSubTitle>{countViews}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />
                     </CardContent>
-                </Card>
+                </Card><br /><br /><br /><br /><br />
             </Col>
         </Row>
     );
