@@ -4,13 +4,15 @@ import { reducer } from './store';
 import { initAssistant } from './assistant';
 import { PhonePage } from './components/PhonePage';
 import CheckPhonePage from "./components/CheckPhonePage";
-import { sendData } from './assistant';
 
 export const App: FC = memo(() => {
         const [appState, dispatch] = useReducer(reducer, {
             currentState: '',
             phone: {},
-            countViews: 0
+            countViews: 0,
+            userId: '',
+            countLike: 0,
+            countDislike: 0
         });
 
         useEffect(() => {
@@ -20,7 +22,7 @@ export const App: FC = memo(() => {
         const route = () => {
             switch (appState.currentState) {
                 case 'phone':
-                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} />;
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike}/>;
                     break;
                 default:
                     return <PhonePage currentState={appState.currentState} />;
@@ -29,6 +31,7 @@ export const App: FC = memo(() => {
         }
 
         return (
+            <>
 
             <Container>
                 <Header
@@ -37,6 +40,7 @@ export const App: FC = memo(() => {
                 />
                 {route()}
             </Container>
+    </>
         );
     }
 );

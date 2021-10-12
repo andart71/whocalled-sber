@@ -1,7 +1,10 @@
 type State = {
     currentState: string,
     phone: object,
-    countViews: number
+    countViews: number,
+    userId: string,
+    countLike: number,
+    countDislike: number
 };
 
 type Action =
@@ -12,7 +15,10 @@ type Action =
     type: 'SUCCESS_PHONE',
     phone: object,
     currentState: string,
-    countViews: number
+    countViews: number,
+    userId: string,
+    countLike: number,
+    countDislike: number
 }
 |{
     type: 'CHECK',
@@ -32,7 +38,10 @@ export const reducer = (state: State, action: Action) => {
                 ...state,
                 currentState: 'phone',
                 phone: action.phone,
-                countViews: action.countViews
+                countViews: action.countViews,
+                userId: action.userId,
+                countLike: action.countLike,
+                countDislike: action.countDislike
             }
         case 'CHECK':
             return {

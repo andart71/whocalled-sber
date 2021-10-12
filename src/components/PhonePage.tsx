@@ -33,7 +33,7 @@ export const PhonePage = ({currentState}: any) => {
         }
     }, []);
     useEffect(() => {
-        if (currentState == "check") {
+        if (currentState === "check") {
             sendData({action: {action_id: 'SEND_PHONE', parameters: {phone: setPhone.phone}}});
         }
     });
@@ -44,6 +44,7 @@ export const PhonePage = ({currentState}: any) => {
         setInputPhone({phone: t.target.value})
     }
     return (
+        <>
         <form ref={formRef} onSubmit={handleSubmit}>
             <Row>
             <Col type="calc" sizeXL={4} sizeM={6} style={{margin: "0 auto", marginTop: "15px"}}>
@@ -71,7 +72,7 @@ export const PhonePage = ({currentState}: any) => {
                 </Col>
             </Row>
         </form>
-
+        </>
     )
 }
 

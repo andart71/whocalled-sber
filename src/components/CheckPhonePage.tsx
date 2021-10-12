@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import {
     Row,
     Col,
@@ -13,8 +12,12 @@ import {
     CellIcon
 } from '@sberdevices/plasma-ui';
 import { IconNetwork, IconLocation, IconEye } from '@sberdevices/plasma-icons';
+import axios from 'axios';
 
-export const CheckPhonePage = ({phone, countViews}: any) => {
+export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDislike}: any) => {
+    const [setLike, checkLike] = useState(0)
+    const [getCountLike, setCountLike] = useState<number>(countLike);
+    const [getCountDislike, setCountDislike] = useState<number>(countDislike);
     return (
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px", width: "100%"}}>
@@ -44,6 +47,8 @@ export const CheckPhonePage = ({phone, countViews}: any) => {
                             content={<TextBox><TextBoxBigTitle>Количество просмотров</TextBoxBigTitle><TextBoxSubTitle>{countViews}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />
+                        Положительных отзывов: {getCountLike}<br />
+                        Отрицательных отзывов: {getCountDislike}
                     </CardContent>
                 </Card><br /><br /><br /><br /><br />
             </Col>
