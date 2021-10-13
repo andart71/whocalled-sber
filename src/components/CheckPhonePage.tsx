@@ -21,7 +21,7 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
     const [getCountLike, setCountLike] = useState<number>(countLike);
     const [getCountDislike, setCountDislike] = useState<number>(countDislike);
 
-    const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone" + phone.full_num + "&user_id=" + userId;
+    const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone=" + phone.full_num + "&user_id=" + userId;
     axios.get(checkLikeUrl).then((resp) => {
         const countCheckLike = Number(resp.data)
         if (countCheckLike!==0){
