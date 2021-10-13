@@ -11,7 +11,7 @@ import {
     TextBox,
     CellIcon
 } from '@sberdevices/plasma-ui';
-import { IconNetwork, IconLocation, IconEye } from '@sberdevices/plasma-icons';
+import { IconNetwork, IconLocation, IconEye, IconDone, IconClose } from '@sberdevices/plasma-icons';
 import axios from 'axios';
 
 export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDislike}: any) => {
@@ -47,8 +47,16 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
                             content={<TextBox><TextBoxBigTitle>Количество просмотров</TextBoxBigTitle><TextBoxSubTitle>{countViews}</TextBoxSubTitle></TextBox>}
                             alignRight="center"
                         />
-                        Положительных отзывов: {getCountLike}<br />
-                        Отрицательных отзывов: {getCountDislike}
+                        <Cell
+                            contentLeft={<CellIcon><IconDone size="s" color="inherit" /></CellIcon>}
+                            content={<TextBox><TextBoxBigTitle>Положительных оценок</TextBoxBigTitle><TextBoxSubTitle>{getCountLike}</TextBoxSubTitle></TextBox>}
+                            alignRight="center"
+                        />
+                        <Cell
+                            contentLeft={<CellIcon><IconClose size="s" color="inherit" /></CellIcon>}
+                            content={<TextBox><TextBoxBigTitle>Отрицательных оценок</TextBoxBigTitle><TextBoxSubTitle>{getCountDislike}</TextBoxSubTitle></TextBox>}
+                            alignRight="center"
+                        />
                     </CardContent>
                 </Card><br /><br /><br /><br /><br />
             </Col>
