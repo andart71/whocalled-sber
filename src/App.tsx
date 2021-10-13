@@ -25,7 +25,8 @@ export const App: FC = memo(() => {
                     return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike}/>;
                     break;
                 default:
-                    return <PhonePage currentState={appState.currentState} />;
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike}/>;
+                    ;
                 break;
             }
         }

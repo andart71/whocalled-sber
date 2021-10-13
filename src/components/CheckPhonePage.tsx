@@ -9,16 +9,54 @@ import {
     TextBoxSubTitle,
     TextBoxBigTitle,
     TextBox,
-    CellIcon
+    CellIcon,
+    Button,
+    detectDevice
 } from '@sberdevices/plasma-ui';
 import { IconNetwork, IconLocation, IconEye, IconDone, IconClose } from '@sberdevices/plasma-icons';
 import axios from 'axios';
 
 export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDislike}: any) => {
-    const [setLike, checkLike] = useState(0)
+    const [checkLike, setLike] = useState<boolean>(false)
     const [getCountLike, setCountLike] = useState<number>(countLike);
     const [getCountDislike, setCountDislike] = useState<number>(countDislike);
+
+    const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone" + phone.full_num + "&user_id=" + userId;
+    axios.get(checkLikeUrl).then((resp) => {
+        const countCheckLike = Number(resp.data)
+        if (countCheckLike!==0){
+            setLike(true)
+        }
+    })
+
+
+    const onClickLike = () => {
+        const addLikeUrl = "https://for-app.online/whocall/addLike.php?phone=" + phone.full_num + "&user_id=" + userId;
+        axios.get(addLikeUrl).then((resp) => {
+        })
+        setCountLike(Number(getCountLike) + 1)
+        setLike(true)
+    }
+
+    const onClickDislike = () => {
+        const addDislikeUrl = "https://for-app.online/whocall/addDislike.php?phone=" + phone.full_num + "&user_id=" + userId;
+        axios.get(addDislikeUrl).then((resp) => {
+        })
+        setCountDislike(Number(getCountDislike) + 1)
+        setLike(true)
+    }
+
+
+        const buttons = (detectDevice() == "mobile" ? <><Button text="Положительный" onClick={onClickLike} size="s"
+                                                                view="primary" stretch/><br/><br/><Button
+            text="Отрицательный" onClick={onClickDislike} size="s" view="critical" stretch/></> : <><Button
+            text="Положительный" size="l" onClick={onClickLike} view="primary" pin="square-clear"/>
+            <Button text="Отрицательный" onClick={onClickDislike} size="l" pin="clear-square" view="critical"/></>)
+
+    const likeDone = <>Оценка номера уже поставлена</>
+
     return (
+        <>
         <Row>
             <Col type="calc" sizeXL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px", width: "100%"}}>
                 <Card style={{ width: "100%", margin: "0 auto" }}>
@@ -58,9 +96,16 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
                             alignRight="center"
                         />
                     </CardContent>
-                </Card><br /><br /><br /><br /><br />
+                </Card>
             </Col>
         </Row>
+        <Row>
+                <Col type="calc" sizeXL={4} sizeL={4} sizeM={2} style={{margin: "0 auto", marginTop: "15px", width: "100%"}}>
+                    {checkLike ? likeDone : buttons}
+            </Col>
+        </Row>
+            <br /><br /><br /><br /><br />
+            </>
     );
 }
 
