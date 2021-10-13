@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {Row, Col, TextField, Button} from '@sberdevices/plasma-ui';
+import {Row, Col, TextField, Button, Spinner} from '@sberdevices/plasma-ui';
 import { isSberBox } from '@sberdevices/plasma-ui/utils';
 import { sendData } from '../assistant';
 import { IconCallCircle } from '@sberdevices/plasma-icons';
@@ -21,6 +21,7 @@ const StyledButton = styled(Button)`
 export const PhonePage = ({currentState}: any) => {
     const formRef = React.useRef<HTMLFormElement>(null);
     const [setPhone, setInputPhone] = useState<any>('');
+    const [checkClick, setClick] = useState<boolean>(true);
     const onKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && formRef.current) {
             const formElements = Array.from(formRef.current.elements) as HTMLElement[];
@@ -35,14 +36,21 @@ export const PhonePage = ({currentState}: any) => {
     useEffect(() => {
         if (currentState === "check") {
             sendData({action: {action_id: 'SEND_PHONE', parameters: {phone: setPhone.phone}}});
+            setClick(true)
         }
     });
     const handleSubmit = () => {
         sendData({action: {action_id: 'SEND_PHONE', parameters: {phone: setPhone.phone}}});
+        setClick(true)
     }
     const handleChange = (t: any) => {
         setInputPhone({phone: t.target.value})
     }
+
+    const ButtonCheck = checkClick ? <Spinner /> : (<StyledButton type="submit" size={isSberBox() ? 'm' : 's'} view="primary">
+        Проверить
+    </StyledButton>);
+
     return (
         <>
         <form ref={formRef} onSubmit={handleSubmit}>
@@ -64,11 +72,10 @@ export const PhonePage = ({currentState}: any) => {
                     />
                 </Col>
             </Row>
+
             <Row>
                 <Col type="calc" sizeXL={4} sizeM={6} style={{margin: "0 auto", marginTop: "15px"}}>
-                    <StyledButton type="submit" size={isSberBox() ? 'm' : 's'} view="primary">
-                        Проверить
-                    </StyledButton>
+                    {ButtonCheck}
                 </Col>
             </Row>
         </form>
