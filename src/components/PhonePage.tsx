@@ -21,7 +21,7 @@ const StyledButton = styled(Button)`
 export const PhonePage = ({currentState}: any) => {
     const formRef = React.useRef<HTMLFormElement>(null);
     const [setPhone, setInputPhone] = useState<any>('');
-    const [checkClick, setClick] = useState<boolean>(true);
+    const [checkClick, setClick] = useState<boolean>(false);
     const onKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && formRef.current) {
             const formElements = Array.from(formRef.current.elements) as HTMLElement[];
