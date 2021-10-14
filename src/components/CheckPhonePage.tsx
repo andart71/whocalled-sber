@@ -20,8 +20,8 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
     const [checkLike, setLike] = useState<boolean>(false)
     const [getCountLike, setCountLike] = useState<number>(countLike);
     const [getCountDislike, setCountDislike] = useState<number>(countDislike);
-
-    const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone=" + phone.full_num + "&user_id=" + userId;
+    const uuid = userId.replaceAll(" ", "")
+    const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone=" + phone.full_num + "&user_id=" + uuid;
     axios.get(checkLikeUrl).then((resp) => {
         const countCheckLike = resp.data
         document.body.append(JSON.stringify(resp.data));
@@ -33,7 +33,7 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
 
     const onClickLike = () => {
         if (checkLike==false) {
-            const addLikeUrl = "https://for-app.online/whocall/addLike.php?phone=" + phone.full_num + "&user_id=" + userId;
+            const addLikeUrl = "https://for-app.online/whocall/addLike.php?phone=" + phone.full_num + "&user_id=" + uuid;
             axios.get(addLikeUrl).then((resp) => {
             })
             setCountLike(Number(getCountLike) + 1)
@@ -43,7 +43,7 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
 
     const onClickDislike = () => {
         if (checkLike==false) {
-            const addDislikeUrl = "https://for-app.online/whocall/addDislike.php?phone=" + phone.full_num + "&user_id=" + userId;
+            const addDislikeUrl = "https://for-app.online/whocall/addDislike.php?phone=" + phone.full_num + "&user_id=" + uuid;
             axios.get(addDislikeUrl).then((resp) => {
             })
             setCountDislike(Number(getCountDislike) + 1)
