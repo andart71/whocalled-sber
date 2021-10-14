@@ -26,6 +26,7 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
         const countCheckLike = Number(resp.data)
         if (countCheckLike!==0){
             setLike(true)
+            document.body.append(JSON.stringify(checkLike));
         }
     })
 
