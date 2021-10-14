@@ -24,6 +24,24 @@ type Action =
     type: 'CHECK',
     currentState: string
 }
+|{
+    type: 'POSITIVE',
+    phone: object,
+    currentState: string,
+    countViews: number,
+    userId: string,
+    countLike: number,
+    countDislike: number
+}
+    |{
+    type: 'NEGATIVE',
+    phone: object,
+    currentState: string,
+    countViews: number,
+    userId: string,
+    countLike: number,
+    countDislike: number
+}
 
 export const reducer = (state: State, action: Action) => {
 
@@ -48,8 +66,30 @@ export const reducer = (state: State, action: Action) => {
                 ...state,
                 currentState: 'check'
             }
+        case 'POSITIVE':
+            return {
+                ...state,
+                currentState: 'positive',
+                phone: action.phone,
+                countViews: action.countViews,
+                userId: action.userId,
+                countLike: action.countLike,
+                countDislike: action.countDislike
+            }
+            break;
+        case 'NEGATIVE':
+            return {
+                ...state,
+                currentState: 'negative',
+                phone: action.phone,
+                countViews: action.countViews,
+                userId: action.userId,
+                countLike: action.countLike,
+                countDislike: action.countDislike
+            }
+            break;
         default:
             return {...state}
     }
-    document.body.append(JSON.stringify(action.type));
+
 };

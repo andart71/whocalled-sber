@@ -16,7 +16,7 @@ import {
 import { IconNetwork, IconLocation, IconEye, IconDone, IconClose } from '@sberdevices/plasma-icons';
 import axios from 'axios';
 
-export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDislike}: any) => {
+export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDislike, positive, negative}: any) => {
     const [checkLike, setLike] = useState<boolean>(false)
     const [getCountLike, setCountLike] = useState<number>(countLike);
     const [getCountDislike, setCountDislike] = useState<number>(countDislike);
@@ -31,22 +31,30 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
 
 
     const onClickLike = () => {
-        const addLikeUrl = "https://for-app.online/whocall/addLike.php?phone=" + phone.full_num + "&user_id=" + userId;
-        axios.get(addLikeUrl).then((resp) => {
-        })
-        setCountLike(Number(getCountLike) + 1)
-        setLike(true)
+        if (checkLike==false) {
+            const addLikeUrl = "https://for-app.online/whocall/addLike.php?phone=" + phone.full_num + "&user_id=" + userId;
+            axios.get(addLikeUrl).then((resp) => {
+            })
+            setCountLike(Number(getCountLike) + 1)
+            setLike(true)
+        }
     }
 
     const onClickDislike = () => {
-        const addDislikeUrl = "https://for-app.online/whocall/addDislike.php?phone=" + phone.full_num + "&user_id=" + userId;
-        axios.get(addDislikeUrl).then((resp) => {
-        })
-        setCountDislike(Number(getCountDislike) + 1)
-        setLike(true)
+        if (checkLike==false) {
+            const addDislikeUrl = "https://for-app.online/whocall/addDislike.php?phone=" + phone.full_num + "&user_id=" + userId;
+            axios.get(addDislikeUrl).then((resp) => {
+            })
+            setCountDislike(Number(getCountDislike) + 1)
+            setLike(true)
+        }
     }
 
-
+    if (positive==true){
+        onClickLike()
+    } else if (negative==true) {
+        onClickDislike()
+    }
         const buttons = (detectDevice() == "mobile" ? <><Button text="Положительный" onClick={onClickLike} size="s"
                                                                 view="primary" stretch/><br/><br/><Button
             text="Отрицательный" onClick={onClickDislike} size="s" view="critical" stretch/></> : <><Button

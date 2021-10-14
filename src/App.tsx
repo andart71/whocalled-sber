@@ -22,7 +22,13 @@ export const App: FC = memo(() => {
         const route = () => {
             switch (appState.currentState) {
                 case 'phone':
-                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike}/>;
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike} positive={false} negative={false} />;
+                    break;
+                case 'positive':
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike} positive={true} negative={false} />;
+                    break;
+                case 'negative':
+                    return <CheckPhonePage phone={appState.phone} countViews={appState.countViews} userId={appState.userId} countLike={appState.countLike} countDislike={appState.countDislike} positive={false} negative={true} />;
                     break;
                 default:
                     return <PhonePage currentState={appState.currentState} />;
