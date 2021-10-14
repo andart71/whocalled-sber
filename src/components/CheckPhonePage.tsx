@@ -25,6 +25,7 @@ export const CheckPhonePage = ({phone, countViews, userId, countLike,  countDisl
     const checkLikeUrl = "https://for-app.online/whocall/checkLike.php?phone="+phone.full_num+"&user_id="+uid;
     axios.get(checkLikeUrl).then((resp) => {
         const checkLikeGET = Number(resp.data);
+        document.body.append(JSON.stringify(checkLikeGET));
         if (checkLikeGET!=0) {
             setLike(true)
         }
